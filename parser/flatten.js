@@ -19,7 +19,7 @@ function out (data) {
     var output = []
     var i = 0
     for( i = 0; i < keys.length; i++) {
-        var temp = keys[i].concat(" = ", values[i],"<br>")
+        var temp = keys[i].concat(" = ", values[i])
         output.push(temp)
     }
     for( i = 0; i < keys.length; i++) {

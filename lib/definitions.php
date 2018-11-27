@@ -15,9 +15,18 @@ function createExplain(){
 
 
 function displayExplain($output){
+ 
   foreach($output as $key => $value)
   {
-    echo '<pre>';echo $value;echo '</pre>';
+    echo '<pre>';
+    echo $value;
+    /**
+    $keywords = preg_split("/[^a-z0-9]+/", $value);
+    for($i = 0;$i < count($keywords); $i++){
+      echo $keywords[$i];
+    }
+    **/
+    echo '</pre>';
   }
 }
 ?>
