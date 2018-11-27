@@ -147,14 +147,22 @@
                         <div class="header">
                             <h2>
                                Instructions
+                                   
                             </h2>
-                         <h5></h5>
+                         <h5> <ul>
+		<li>Only provide the query.</li>
+		<li>For example: for db.collectionName.find({query}):</li>
+		<ul>
+		    <li>Select collectionName from the list and then input the {query} in the text box, curly braces included 
+		</ul>
+	    </ul>
+</h5>
                         </div>
-                       <form action="query.php" method="post">
+                       <form action="5.php" method="post">
                         <div class="body">
                             <div class="row clearfix">
                                 <div class="col-sm-6">
-                                    <select class="form-control show-tick" name ="collection_name">
+                                    <select class="form-control show-tick" name ="collection_name" required="true"> 
                                         <option value="">-- Select Collection  --</option>
 
 	<?php
@@ -170,6 +178,8 @@
                                                                        
                                                                        
                                     </select>
+
+		<input type="hidden" value="<?php echo $db_name ?>" name="db_name" />
                                           <button type="submit" class="btn btn-primary m-t-15 waves-effect">Submit</button>
                                 </div>
    <div class="col-sm-6">
@@ -186,44 +196,7 @@
                 </div>
             </div>
             <!-- #END# Select -->
-            <!-- Body -->
-            <div class="row clearfix">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="card">
-                        <div class="header">
-                            <div class="row clearfix">
-                                <div class="col-xs-12 col-sm-6">
-                                    <h2>Instructions</h2>
-                                         	<?php
-	require('./config/config.php');
-	
-	$db_name = $_POST["db_name"];
-	$db = $connection->selectDatabase($db_name);
-	?>	   
-	    <br>
-	    
-	    <form action="query.php" method="post">
-		Select Collection: 
-		<select name ="collection_name" onchange="showUser(this.value)"><br>
-		    <?php
- 		    foreach ($db->listCollections() as $collection) {
-			echo "<option value = \"{$collection->getName()}\">{$collection->getName()}</option>"; 
-		    }?>
-		</select>
-		find(<input type="text" name="query">)<br>
-		<input type="hidden" value="<?php echo $db_name ?>" name="db_name" />
-		<input type="submit">
-	    </form>
-                                </div>
-                                
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #END# Body -->
-            </div>
+             </div>
         </div>
     </section>
 
