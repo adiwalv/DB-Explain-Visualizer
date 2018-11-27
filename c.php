@@ -1,14 +1,13 @@
 <html>
-<body>
+<body> 
 <form action = 'text.php' method="post">
-<select>
+<select name = "db_name">
 <?php
-
      require('./config/config.php');
 
 foreach($connection->listDatabases() as $database)
 {
-    echo "<option value = \"$database->getName()\" name = 'db_name'>{$database->getName()}</option>";
+    echo "<option value = \"{$database->getName()}\">{$database->getName()}</option>";
 }
 ?>
 </select>
