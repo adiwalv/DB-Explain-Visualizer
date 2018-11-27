@@ -1,7 +1,6 @@
 <?php
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -163,37 +162,24 @@ session_start();
                         
                         <div class="body">
                             <div class="row clearfix">
-                              <?php                                      
+                              <?php 
+
 require('lib/definitions.php');
-$array = $_POST["query"];
-$array = str_split($array);
-$output = [];
-$i = 0;
-foreach($array as $char){
-  if($char == "$"||$char == "\""){
-     array_push($output,"\\",$char);
-     continue;
+
+$output = $_SESSION["output"];
+foreach($output as $key => $value)
+  {
+    echo '<pre>';
+   
+   
+    $keywords = preg_split("/[^a-z0-9]+/", $value);
+    for($i = 0;$i < count($keywords); $i++){
+      echo $keywords[$i];
+    }
+   
+    echo '</pre>';
   }
-   array_push($output,$char);
-}
-$query = implode("",$output);
-
-$cmd = "mongo localhost/{$_POST["db_name"]} --eval \"db.{$_POST["collection_name"]}.find({$query}).explain('executionStats')\"";
-$output = shell_exec($cmd);
-file_put_contents($file, $output);
-deleteRubbish($file);
-$output = createExplain();
-displayExplain($output);
-
-$_SESSION["output"] = $output;
- 
-
 ?>
-
- <div class="col-xs-12 col-sm-6 align-right">
-                                    <div class="switch panel-switch-btn">
-                                   <br>   <a href = "view.php"><button class="btn btn-primary waves-effect">Make it look better</button></a>
-                                    </div>
                                 </div>
                                 </div>
 
