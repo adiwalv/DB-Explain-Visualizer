@@ -2,7 +2,7 @@
 
 require('lib/definitions.php');
 
-$cmd = "mongo localhost/test --eval \"{$_POST["query"]}.explain()\"";
+$cmd = "mongo localhost/test --eval \"{$_POST["query"]}.explain('executionStats')\"";
 $output = shell_exec($cmd);
 file_put_contents($file, $output);
 deleteRubbish($file);

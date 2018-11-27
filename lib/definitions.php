@@ -17,7 +17,7 @@ function createExplain(){
 function displayExplain($output){
   foreach($output as $key => $value)
   {
-    echo $value;
+    echo '<pre>';echo $value;echo '</pre>';
   }
 }
 ?>
