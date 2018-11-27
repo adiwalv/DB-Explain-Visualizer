@@ -78,7 +78,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="index.html">DB Visualizer</a>
+                <a class="navbar-brand" href="index.php">DB Visualizer</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                     <!-- #END# Notifications -->
@@ -99,7 +99,7 @@
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active">
-                        <a href="index.html">
+                        <a href="index.php">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
@@ -158,7 +158,7 @@
 	    </ul>
 </h5>
                         </div>
-                       <form action="5.php" method="post">
+                       <form action="query.php" method="post">
                         <div class="body">
                             <div class="row clearfix">
                                 <div class="col-sm-6">
@@ -185,7 +185,7 @@
    <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" placeholder="Type in the query you'd put in find()" />
+                                                 <input type="text" name="query" class="form-control" placeholder="Type in the query you'd put in find()" />
                                         </div>
                                     </div>
 

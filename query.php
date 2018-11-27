@@ -78,7 +78,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="index.html">DB Visualizer</a>
+                <a class="navbar-brand" href="index.php">DB Visualizer</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                     <!-- #END# Notifications -->
@@ -99,7 +99,7 @@
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active">
-                        <a href="index.html">
+                        <a href="index.php">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
@@ -155,10 +155,20 @@
                               <?php 
 
 require('lib/definitions.php');
+$array = $_POST["query"];
+$array = str_split($array);
+$output = [];
+$i = 0;
+foreach($array as $char){
+  if($char == "$"||$char == "\""){
+     array_push($output,"\\",$char);
+     continue;
+  }
+   array_push($output,$char);
+}
+$query = implode("",$output);
 
-
-
-$cmd = "mongo localhost/{$_POST["db_name"]} --eval \"db.{$_POST["collection_name"]}.find({$_POST["query"]}).explain('executionStats')\"";
+$cmd = "mongo localhost/{$_POST["db_name"]} --eval \"db.{$_POST["collection_name"]}.find({$query}).explain('executionStats')\"";
 $output = shell_exec($cmd);
 file_put_contents($file, $output);
 deleteRubbish($file);
