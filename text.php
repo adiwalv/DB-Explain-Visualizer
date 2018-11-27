@@ -8,7 +8,6 @@
     <title>DB Visualizer</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
@@ -22,8 +21,17 @@
     <!-- Animation Css -->
     <link href="plugins/animate-css/animate.css" rel="stylesheet" />
 
-    <!-- Morris Chart Css-->
-    <link href="plugins/morrisjs/morris.css" rel="stylesheet" />
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+    <!-- Bootstrap DatePicker Css -->
+    <link href="../../plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+    <!-- Wait Me Css -->
+    <link href="plugins/waitme/waitMe.css" rel="stylesheet" />
+
+    <!-- Bootstrap Select Css -->
+    <link href="plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
     <!-- Custom Css -->
     <link href="css/style.css" rel="stylesheet">
@@ -131,7 +139,53 @@
         <div class="container-fluid">
             <div class="block-header">
                 <h2>DASHBOARD</h2>
-            </div>                  
+            </div>
+                  <!-- Select -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                               Instructions
+                            </h2>
+                         <h5></h5>
+                        </div>
+                       <form action="query.php" method="post">
+                        <div class="body">
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <select class="form-control show-tick" name ="collection_name">
+                                        <option value="">-- Select Collection  --</option>
+
+	<?php
+	require('./config/config.php');
+	
+	$db_name = $_POST["db_name"];
+	$db = $connection->selectDatabase($db_name);
+ 		    foreach ($db->listCollections() as $collection) {
+			echo "<option value = \"{$collection->getName()}\">{$collection->getName()}</option>"; 
+		    }?>
+		</select><br>
+
+                                                                       
+                                                                       
+                                    </select>
+                                          <button type="submit" class="btn btn-primary m-t-15 waves-effect">Submit</button>
+                                </div>
+   <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" placeholder="Type in the query you'd put in find()" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Select -->
             <!-- Body -->
             <div class="row clearfix">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -145,10 +199,7 @@
 	
 	$db_name = $_POST["db_name"];
 	$db = $connection->selectDatabase($db_name);
-	?>
-
-	Instructions:
-	   
+	?>	   
 	    <br>
 	    
 	    <form action="query.php" method="post">
