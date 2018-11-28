@@ -173,9 +173,17 @@ $output = createExplain();
 
     <section class="content">
         <div class="container-fluid">
+                 
             <div class="block-header">
                 <h2>DASHBOARD</h2>
             </div>
+                 <!-- <div class="body">
+                            <ol class="breadcrumb breadcrumb-bg-pink">
+                                <li><a href="index.php"><i class="material-icons">home</i> Home</a></li>
+                                <li><a href="text.php"><i class="material-icons">input</i> Input</a></li>
+                                <li class="active"><i class="material-icons">list_alt</i> Explain Result</li>
+                            </ol>
+                        </div> -->
   <!-- Widgets -->
             <div class="row clearfix">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -245,7 +253,9 @@ $output = createExplain();
                                 </div>
                             </div>
                         </div>
-                        
+
+
+                              
                         <div class="body">
                             <div class="row clearfix">
                               <?php                                      
