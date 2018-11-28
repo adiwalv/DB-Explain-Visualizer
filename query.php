@@ -15,7 +15,8 @@ if($sort_query==NULL){
   $sort_query="{}";
 }
 
-if($limit_query==NULL){
+
+if($_POST["limit_query"]==NULL){
   $limit_query="";
 } else {
   $limit_query = (int)$_POST["limit_query"];
