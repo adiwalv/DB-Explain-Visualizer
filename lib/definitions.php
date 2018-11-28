@@ -35,6 +35,9 @@ function deleteRubbish($file) {
 function createExplain(){
   $cmd = "node parser/flatten.js temp.json 2>&1";
   exec($cmd,$output);
+  if (!unlink('temp.json')) {
+  echo ("Error deleting temp.json");
+  }
   return $output;
 }
 

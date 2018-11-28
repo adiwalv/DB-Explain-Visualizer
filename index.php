@@ -21,8 +21,7 @@ makeDir('uploads');
       $output = createExplain();
       $_SESSION["output"] = $output;
       //print_r( $_SESSION["output"]);
-      error_reporting(E_ALL);
-      ini_set('display_errors', TRUE);
+      
       header('Location: file.php');
     } else{
         $error = "There was an error uploading the file, please try again!";
@@ -154,7 +153,7 @@ foreach($connection->listDatabases() as $database)
                         </div>
                         <div class="modal-body">
                                  <h4>                             Type the command below in the terminal:</h4>
-        <h6>                                              mongo localhost/dbName --eval "db.collectionName.find({query}).sort({query}).limit(limit_no).explain('executionStats')" > fileName.json</h6>
+        <h6>                                              mongo localhost/dbName --eval "db.collectionName.find({query}).sort({query}).limit(limit_no).explain('allPlansExecution')" > fileName.json</h6>
                                                                        <br>                      <br>                                                                                       Fill the correct values depending on your database, and then select this newly generated file via the filepicker! 
                         </div>
                         <div class="modal-footer">

@@ -22,7 +22,7 @@ if($_POST["limit_query"]==NULL){
   $limit_query = (int)$_POST["limit_query"];
 }
 
-$query = "\"db.{$_POST["collection_name"]}.find({$find_query}).sort({$sort_query}).limit({$limit_query}).explain('executionStats');\"";
+$query = "\"db.{$_POST["collection_name"]}.find({$find_query}).sort({$sort_query}).limit({$limit_query}).explain('allPlansExecution');\"";
 $cmd = "mongo localhost/{$_POST["db_name"]} --eval ".$query;
 
 $output = shell_exec($cmd);
