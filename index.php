@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+
+require('lib/definitions.php');
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -12,6 +20,7 @@
     <link href="css/font.css" rel="stylesheet" type="text/css">
     <link href="css/icons.css" rel="stylesheet" type="text/css">
 
+                                                    
     <!-- Bootstrap Core Css -->
     <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
@@ -38,6 +47,23 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/themes/all-themes.css" rel="stylesheet" />
+                                                 <!-- Bootstrap Core Css -->
+    <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Sweetalert Css -->
+    <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="css/themes/all-themes.css" rel="stylesheet" />
 </head>
 
 <body class="login-page">
@@ -48,7 +74,7 @@
         </div>
         <div class="card">
             <div class="body">
-                <form action='text.php' method="POST">
+                <form action="text.php" method="POST">
                     <div class="msg">Select the database you want to connect to</div>
                     <div class="input-group">
                         <span class="input-group-addon">
@@ -73,15 +99,72 @@ foreach($connection->listDatabases() as $database)
                     <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">CONNECT</button>
 
                 </form>
+
+                      
+                      
+
+                                      <form  enctype="multipart/form-data" action="index.php" method="POST">
+                    <center><h3>Or</h3></center>
+
+                         <div class="msg">Select file for explain()                                                                                                                                    <button type="button" class="btn bg-blue-grey btn-circle waves-effect waves-circle waves-float waves-light" data-toggle="modal" data-target="#largeModal">
+                                    <i class="material-icons">live_help</i>
+                                </button></div>
+                                                          
+                               
+
+    <input type="file" name="uploaded_file"></input><br />
+                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">See Results</button>
+
+                </form>
+<?PHP
+
+
+                      
+      function makeDir($path)
+      {
+        return is_dir($path) || mkdir($path);
+      }
+makeDir('uploads');
+  if(!empty($_FILES['uploaded_file']))
+  {
+    $path = "uploads/";
+    $path = $path . basename( $_FILES['uploaded_file']['name']);
+    if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $path)) {
+
+      deleteRubbish($path);
+      $output = createExplain();
+      $_SESSION["output"] = $output;
+      header('Location:file.php');
+      
+    } else{
+        echo "There was an error uploading the file, please try again!";
+    }
+  }
+?>
             </div>
                   
     </div>
+<!-- Large Size -->
+            <div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                                 <h3 class="modal-title" id="largeModalLabel">How to create a explain() file</h3>
+                        </div>
+                        <div class="modal-body">
+                                 <h4>                             Type the command below in the terminal:</h4>
+        <h6>                                              mongo localhost/dbName --eval "db.collectionName.find({query}).sort({query}).limit(limit_no).explain('executionStats')" > fileName.json</h6>
+                                                                       <br>                      <br>                                                                                       Fill the correct values depending on your database, and then select this newly generated file via the filepicker! 
+                        </div>
+                        <div class="modal-footer">
+                            
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-
-
-          
-    <!-- Jquery Core Js -->
-    <script src="plugins/jquery/jquery.min.js"></script>
+           <script src="plugins/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core Js -->
     <script src="plugins/bootstrap/js/bootstrap.js"></script>
@@ -94,7 +177,7 @@ foreach($connection->listDatabases() as $database)
 
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
-    <script src="js/pages/examples/sign-in.js"></script>
+    <script src="js/pages/examples/sign-up.js"></script>
 </body>
 
 </html>

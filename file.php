@@ -1,38 +1,8 @@
 <?php
 session_start();
 
-
 require('lib/definitions.php');
-
-$find_query = makeString($_POST["find_query"]);
-$sort_query = makeString($_POST["sort_query"]);
-
-if($find_query==NULL){
-  $find_query="{}";
-}
-
-if($sort_query==NULL){
-  $sort_query="{}";
-}
-
-
-if($_POST["limit_query"]==NULL){
-  $limit_query="";
-} else {
-  $limit_query = (int)$_POST["limit_query"];
-}
-
-$query = "\"db.{$_POST["collection_name"]}.find({$find_query}).sort({$sort_query}).limit({$limit_query}).explain('executionStats');\"";
-$cmd = "mongo localhost/{$_POST["db_name"]} --eval ".$query;
-
-$output = shell_exec($cmd);
-file_put_contents($file, $output);
-deleteRubbish($file);
-
-$output = createExplain();
-
-
-
+                                 $output = $_SESSION["output"];
 ?>
 
 <!DOCTYPE html>
@@ -174,10 +144,9 @@ $output = createExplain();
 
     <section class="content">
         <div class="container-fluid">
-                 
             <div class="block-header">
                 <h2>DASHBOARD</h2>
-            </div>
+             </div>
                  <!-- <div class="body">
                             <ol class="breadcrumb breadcrumb-bg-pink">
                                 <li><a href="index.php"><i class="material-icons">home</i> Home</a></li>
@@ -234,52 +203,39 @@ $output = createExplain();
             </div>
             <!-- #END# Widgets -->
 
-
-                  
-                  <!-- Select -->
+                   
+                 <!-- <div class="body">
+                            <ol class="breadcrumb breadcrumb-bg-blue">
+                                <li><a href="index.php"><i class="material-icons">home</i> Home</a></li>
+                                <li><a href="text.php"><i class="material-icons">input</i> Input</a></li>
+                            </ol>
+                        </div> -->
+         <!-- Horizontal Layout -->
+                                     <form action="query.php" method="post">
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <div class="row clearfix">
-                                <div class="col-xs-12 col-sm-6">
-                                    <h2>Explain</h2>
-                                         <br>
-                                         <small><b><?php echo $query?></b></small>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 align-right">
-                                    <div class="switch panel-switch-btn">
-                                       <button class="btn btn-primary m-t-15 waves-effect">Graphical Representation</button>
-                                    </div>
-                                </div>
-                            </div>
+                             <h2>
+                      Explain Results
+                                   
+                            </h2>
+                      
+
                         </div>
-
-
-                              
+                          
                         <div class="body">
-                            <div class="row clearfix">
-                              <?php                                      
-
-
-
+                        <?php
 
 displayExplain($output);
- 
-
 ?>
-
-
+                                 
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
-            <!-- #END# Select -->
-             </div>
+            <!-- #END# Horizontal Layout -->
+                                  
         </div>
     </section>
 
@@ -317,7 +273,7 @@ displayExplain($output);
 
     <!-- Sparkline Chart Plugin Js -->
     <script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
-
+ <script src="plugins/dropzone/dropzone.js"></script>
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
     <script src="js/pages/index.js"></script>
