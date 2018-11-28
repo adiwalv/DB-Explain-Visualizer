@@ -172,7 +172,7 @@ foreach($output as $key => $value)
     echo '<pre>';
    
    
-    $keywords = preg_split("/[^a-z0-9]+/", $value);
+    $keywords = preg_split("/[^a-zA-Z0-9]+/", $value);
     for($i = 0;$i < count($keywords); $i++){
       echo $keywords[$i];
     }

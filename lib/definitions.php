@@ -29,4 +29,20 @@ function displayExplain($output){
     echo '</pre>';
   }
 }
+
+function makeString($array){
+
+$array = str_split($array);
+$output = [];
+$i = 0;
+foreach($array as $char){
+  if($char == "$"||$char == "\""){
+     array_push($output,"\\",$char);
+     continue;
+  }
+   array_push($output,$char);
+}
+
+return implode("",$output);
+}
 ?>

@@ -139,13 +139,15 @@
         <div class="container-fluid">
             <div class="block-header">
                 <h2>DASHBOARD</h2>
-            </div>
-                  <!-- Select -->
+             </div>
+        </div>
+          <!-- Horizontal Layout -->
+                                     <form action="query.php" method="post">
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>
+                             <h2>
                                Instructions
                                    
                             </h2>
@@ -157,12 +159,18 @@
 		</ul>
 	    </ul>
 </h5>
+
                         </div>
-                       <form action="query.php" method="post">
                         <div class="body">
-                            <div class="row clearfix">
-                                <div class="col-sm-6">
-                                    <select class="form-control show-tick" name ="collection_name" required="true"> 
+                            <form class="form-horizontal">
+                                <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                             <label for="collection_name">Collection:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                  <select class="form-control show-tick" name ="collection_name" required="true"> 
                                         <option value="">-- Select Collection  --</option>
 
 	<?php
@@ -173,31 +181,64 @@
  		    foreach ($db->listCollections() as $collection) {
 			echo "<option value = \"{$collection->getName()}\">{$collection->getName()}</option>"; 
 		    }?>
-		</select><br>
-
-                                                                       
-                                                                       
-                                    </select>
-
-		<input type="hidden" value="<?php echo $db_name ?>" name="db_name" />
-                                          <button type="submit" class="btn btn-primary m-t-15 waves-effect">Submit</button>
-                                </div>
-   <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                                 <input type="text" name="query" class="form-control" placeholder="Type in the query you'd put in find()" />
+		</select>    
+                                            </div>
                                         </div>
                                     </div>
-
                                 </div>
-                            </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                             <label for="find_query">Find:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="find_query" class="form-control" placeholder="Enter what you'd type in find()" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                      
+                                <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                             <label for="sort_query">Sort:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" name="sort_query" class="form-control" placeholder="Enter what you'd type in sort()">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                      
+                                <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                             <label for="limit_query">Limit:</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                        <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" class="form-control" name="limit_query">
+                                        <label class="form-label">Limit</label>
+                                    </div>
+                                    <div class="help-info">Numbers only</div>
+                                </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+
+                                             <input type="hidden" value="<?php echo $db_name ?>" name="db_name" />
+                                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- #END# Select -->
-             </div>
-        </div>
+            <!-- #END# Horizontal Layout -->
     </section>
 
     <!-- Jquery Core Js -->

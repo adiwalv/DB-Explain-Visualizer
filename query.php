@@ -165,20 +165,15 @@ session_start();
                             <div class="row clearfix">
                               <?php                                      
 require('lib/definitions.php');
-$array = $_POST["query"];
-$array = str_split($array);
-$output = [];
-$i = 0;
-foreach($array as $char){
-  if($char == "$"||$char == "\""){
-     array_push($output,"\\",$char);
-     continue;
-  }
-   array_push($output,$char);
-}
-$query = implode("",$output);
 
-$cmd = "mongo localhost/{$_POST["db_name"]} --eval \"db.{$_POST["collection_name"]}.find({$query}).explain('executionStats')\"";
+$find_query = makeString($_POST["find_query"]);
+$sort_query = makeString($_POST["sort_query"]);
+$limit_query = (int)$_POST["limit_query"];
+
+
+$cmd = "mongo localhost/{$_POST["db_name"]} --eval \"db.{$_POST["collection_name"]}.find({$find_query}).sort({$sort_query}).limit({$limit_query}).explain('executionStats')\"";
+
+
 $output = shell_exec($cmd);
 file_put_contents($file, $output);
 deleteRubbish($file);
