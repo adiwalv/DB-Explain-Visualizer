@@ -22,6 +22,14 @@ if($limit_query==NULL){
 }
 
 $query = "\"db.{$_POST["collection_name"]}.find({$find_query}).sort({$sort_query}).limit({$limit_query}).explain('executionStats');\"";
+$cmd = "mongo localhost/{$_POST["db_name"]} --eval ".$query;
+
+$output = shell_exec($cmd);
+file_put_contents($file, $output);
+deleteRubbish($file);
+$output = createExplain();
+
+
 
 ?>
 
@@ -175,8 +183,8 @@ $query = "\"db.{$_POST["collection_name"]}.find({$find_query}).sort({$sort_query
                             <i class="material-icons">description</i>
                         </div>
                         <div class="content">
-                            <div class="text">Documents Checked</div>
-                            <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
+                                 <div class="text">Documents Checked</div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo getValue($output,"totalDocsExamined");?>" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
@@ -187,7 +195,7 @@ $query = "\"db.{$_POST["collection_name"]}.find({$find_query}).sort({$sort_query
                         </div>
                         <div class="content">
                                  <div class="text">Query Time(ms)</div>
-                            <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo getValue($output,"executionTimeMillis");?>" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
@@ -198,7 +206,7 @@ $query = "\"db.{$_POST["collection_name"]}.find({$find_query}).sort({$sort_query
                         </div>
                         <div class="content">
                             <div class="text">Documents Returned</div>
-                            <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo getValue($output,"nReturned");?>" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
@@ -209,7 +217,7 @@ $query = "\"db.{$_POST["collection_name"]}.find({$find_query}).sort({$sort_query
                         </div>
                         <div class="content">
                             <div class="text">Index Keys Examined</div>
-                            <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20"></div>
+                            <div class="number count-to" data-from="0" data-to="<?php echo getValue($output,"totalKeysExamined");?>" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>
                 </div>
@@ -231,7 +239,7 @@ $query = "\"db.{$_POST["collection_name"]}.find({$find_query}).sort({$sort_query
                                 </div>
                                 <div class="col-xs-12 col-sm-6 align-right">
                                     <div class="switch panel-switch-btn">
-                                      <!--  <button>Make it look better</button> -->
+                                       <button class="btn btn-primary m-t-15 waves-effect">Graphical Representation</button>
                                     </div>
                                 </div>
                             </div>
@@ -243,16 +251,6 @@ $query = "\"db.{$_POST["collection_name"]}.find({$find_query}).sort({$sort_query
 
 
 
-echo '<h3>'.$query.'</h3'>
-
-$cmd = "mongo localhost/{$_POST["db_name"]} --eval ".$query;
-
-$output = shell_exec($cmd);
-file_put_contents($file, $output);
-deleteRubbish($file);
-$output = createExplain();
-
-//print_r($output);
 
 displayExplain($output);
 
@@ -261,14 +259,6 @@ $_SESSION["output"] = $output;
 
 ?>
 
- <div class="col-xs-12 col-sm-6 align-right">
-                                    <div class="switch panel-switch-btn">
-                                   <br>   <a href = "view.php"><button class="btn btn-primary waves-effect">Make it look better</button></a>
-                                    </div>
-                                </div>
-                                </div>
-
-                            </div>
 
                         </div>
 

@@ -2,6 +2,30 @@
 $file = 'temp.json';
 
 
+function removeDilimiters($output){
+  $new_output = [];
+  foreach($output as $key => $value)
+  {
+    $keywords = preg_split("/[^a-zA-Z0-9.]+/", $value);
+    array_push($new_output,implode(" ",$keywords));
+  }
+  return $new_output;
+}
+
+
+function getValue($output,$key) {
+  $output = removeDilimiters($output);
+  for($i = 0; $i < count($output); $i++){
+    $words = explode(" ",$output[$i]);
+    $index = array_search($key,$words);
+    if($index != FALSE)
+      return $words[$index+1];
+  }
+}
+
+
+
+
 function deleteRubbish($file) {
   $cmd = "sed '1,4d' $file";
   $output = shell_exec($cmd);
