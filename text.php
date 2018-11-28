@@ -141,12 +141,12 @@
                 <h2>DASHBOARD</h2>
              </div>
                    
-                  <div class="body">
+                 <!-- <div class="body">
                             <ol class="breadcrumb breadcrumb-bg-blue">
                                 <li><a href="index.php"><i class="material-icons">home</i> Home</a></li>
                                 <li><a href="text.php"><i class="material-icons">input</i> Input</a></li>
                             </ol>
-                        </div> 
+                        </div> -->
         </div>
           <!-- Horizontal Layout -->
                                      <form action="query.php" method="post">
