@@ -1,5 +1,28 @@
 <?php
 session_start();
+
+
+require('lib/definitions.php');
+
+$find_query = makeString($_POST["find_query"]);
+$sort_query = makeString($_POST["sort_query"]);
+
+if($find_query==NULL){
+  $find_query="{}";
+}
+
+if($sort_query==NULL){
+  $sort_query="{}";
+}
+
+if($limit_query==NULL){
+  $limit_query="";
+} else {
+  $limit_query = (int)$_POST["limit_query"];
+}
+
+$query = "\"db.{$_POST["collection_name"]}.find({$find_query}).sort({$sort_query}).limit({$limit_query}).explain('executionStats');\"";
+
 ?>
 
 <!DOCTYPE html>
@@ -13,8 +36,8 @@ session_start();
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link href="css/font.css" rel="stylesheet" type="text/css">
+    <link href="css/icons.css" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
     <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -144,6 +167,57 @@ session_start();
             <div class="block-header">
                 <h2>DASHBOARD</h2>
             </div>
+  <!-- Widgets -->
+            <div class="row clearfix">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-pink hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">book</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">NEW TASKS</div>
+                            <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-cyan hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">date</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">NEW TICKETS</div>
+                            <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-light-green hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">forum</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">NEW COMMENTS</div>
+                            <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-orange hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">person_add</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">NEW VISITORS</div>
+                            <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Widgets -->
+
+
+                  
                   <!-- Select -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -152,6 +226,8 @@ session_start();
                             <div class="row clearfix">
                                 <div class="col-xs-12 col-sm-6">
                                     <h2>Explain</h2>
+                                         <br>
+                                         <small><b><?php echo $query?></b></small>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 align-right">
                                     <div class="switch panel-switch-btn">
@@ -164,15 +240,12 @@ session_start();
                         <div class="body">
                             <div class="row clearfix">
                               <?php                                      
-require('lib/definitions.php');
-
-$find_query = makeString($_POST["find_query"]);
-$sort_query = makeString($_POST["sort_query"]);
-$limit_query = (int)$_POST["limit_query"];
 
 
-$cmd = "mongo localhost/{$_POST["db_name"]} --eval \"db.{$_POST["collection_name"]}.find({$find_query}).sort({$sort_query}).limit({$limit_query}).explain('executionStats')\"";
 
+echo '<h3>'.$query.'</h3'>
+
+$cmd = "mongo localhost/{$_POST["db_name"]} --eval ".$query;
 
 $output = shell_exec($cmd);
 file_put_contents($file, $output);
