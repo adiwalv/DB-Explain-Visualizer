@@ -3,6 +3,32 @@ session_start();
 
 
 require('lib/definitions.php');
+$error = "";
+
+                      
+      function makeDir($path)
+      {
+        return is_dir($path) || mkdir($path);
+      }
+makeDir('uploads');
+  if(!empty($_FILES['uploaded_file']))
+  {
+    $path = "uploads/";
+    $path = $path . basename( $_FILES['uploaded_file']['name']);
+    if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $path)) {
+
+      deleteRubbish($path);
+      $output = createExplain();
+      $_SESSION["output"] = $output;
+      //print_r( $_SESSION["output"]);
+      error_reporting(E_ALL);
+      ini_set('display_errors', TRUE);
+      header('Location: file.php');
+    } else{
+        $error = "There was an error uploading the file, please try again!";
+    }
+  }
+
 ?>
 
 
@@ -106,41 +132,16 @@ foreach($connection->listDatabases() as $database)
                                       <form  enctype="multipart/form-data" action="index.php" method="POST">
                     <center><h3>Or</h3></center>
 
-                         <div class="msg">Select file for explain()                                                                                                                                    <button type="button" class="btn bg-blue-grey btn-circle waves-effect waves-circle waves-float waves-light" data-toggle="modal" data-target="#largeModal">
-                                    <i class="material-icons">live_help</i>
-                                </button></div>
+                         <div class="msg">
+ <span title="Click ?  to see how to create explain files using mongo"> Select file for explain()                                                                                                                                    <button type="button" class="btn bg-blue btn-circle waves-effect waves-circle waves-float waves-light" data-toggle="modal" data-target="#largeModal" >                                  <i class="material-icons">live_help</i>
+                                </button></span></div>
                                                           
                                
 
-    <input type="file" name="uploaded_file"></input><br />
-                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">See Results</button>
-
+    <input type="file" name="uploaded_file" required></input><br />
+                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">SEE RESULTS</button>
+                                                                                        <br><font color="red"><?php echo $error;?></font>
                 </form>
-<?PHP
-
-
-                      
-      function makeDir($path)
-      {
-        return is_dir($path) || mkdir($path);
-      }
-makeDir('uploads');
-  if(!empty($_FILES['uploaded_file']))
-  {
-    $path = "uploads/";
-    $path = $path . basename( $_FILES['uploaded_file']['name']);
-    if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $path)) {
-
-      deleteRubbish($path);
-      $output = createExplain();
-      $_SESSION["output"] = $output;
-      header('Location:file.php');
-      
-    } else{
-        echo "There was an error uploading the file, please try again!";
-    }
-  }
-?>
             </div>
                   
     </div>
@@ -159,6 +160,7 @@ makeDir('uploads');
                         <div class="modal-footer">
                             
                             <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+
                         </div>
                     </div>
                 </div>
@@ -168,7 +170,7 @@ makeDir('uploads');
 
     <!-- Bootstrap Core Js -->
     <script src="plugins/bootstrap/js/bootstrap.js"></script>
-
+                <script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
     <!-- Waves Effect Plugin Js -->
     <script src="plugins/node-waves/waves.js"></script>
 
