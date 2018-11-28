@@ -1,6 +1,7 @@
 <?php
 $file = 'temp.json';
 
+
 function deleteRubbish($file) {
   $cmd = "sed '1,4d' $file";
   $output = shell_exec($cmd);

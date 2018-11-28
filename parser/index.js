@@ -7,7 +7,7 @@ flatten.unflatten = unflatten
 function flatten (target, opts) {
   opts = opts || {}
 
-  var delimiter = opts.delimiter || '==>'
+  var delimiter = opts.delimiter || ':->'
   var maxDepth = opts.maxDepth
   var output = {}
 
@@ -44,7 +44,7 @@ function flatten (target, opts) {
 function unflatten (target, opts) {
   opts = opts || {}
 
-  var delimiter = opts.delimiter || '==>'
+  var delimiter = opts.delimiter || ':->'
   var overwrite = opts.overwrite || false
   var result = {}
 
