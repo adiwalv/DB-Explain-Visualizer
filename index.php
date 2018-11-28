@@ -3,10 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>DBVisualizer</title>
+    <title>DB Visualizer</title>
     <!-- Favicon-->
-             <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
@@ -35,7 +38,6 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/themes/all-themes.css" rel="stylesheet" />
-
 </head>
 
 <body class="login-page">
@@ -46,12 +48,15 @@
         </div>
         <div class="card">
             <div class="body">
-                <form action = 'text.php' method="post">
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
+                <form action='text.php' method="POST">
+                    <div class="msg">Select the database you want to connect to</div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">book</i>
+                        </span>
+                        <div class="form-line">
                                          <select class="form-control show-tick" name = "db_name" required="true">
-                                        <option value="">-- Please select DB --</option>
-                                                                       <?php
+                                 <option value="">-- Select Database  --</option>                                                                      <?php
      require('./config/config.php');
 
 foreach($connection->listDatabases() as $database)
@@ -59,16 +64,21 @@ foreach($connection->listDatabases() as $database)
     echo "<option value = \"{$database->getName()}\">{$database->getName()}</option>";
 }
 ?>
-                                    </select><br>
-				    <button class="btn btn-block btn-lg bg-blue waves-effect" type="submit">Submit</button>
-                                </div>
-				 
+
+</select>
+                                                                                                                  
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">CONNECT</button>
 
                 </form>
             </div>
-        </div>
     </div>
 
+
+
+          
     <!-- Jquery Core Js -->
     <script src="plugins/jquery/jquery.min.js"></script>
 

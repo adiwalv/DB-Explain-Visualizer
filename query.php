@@ -180,7 +180,7 @@ deleteRubbish($file);
 $output = createExplain();
 displayExplain($output);
 
-$_SESSION["output"] = $output;
+$_SESSION["output"] = $output; 
  
 
 ?>

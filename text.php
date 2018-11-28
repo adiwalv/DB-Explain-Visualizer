@@ -195,6 +195,7 @@
                                             <div class="form-line">
                                                 <input type="text" name="find_query" class="form-control" placeholder="Enter what you'd type in find()" >
                                             </div>
+                                                                                      <div class="help-info">Find Query.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -208,7 +209,9 @@
                                             <div class="form-line">
                                                 <input type="text" name="sort_query" class="form-control" placeholder="Enter what you'd type in sort()">
                                             </div>
+                                                                                      <div class="help-info">Sort Query.</div>
                                         </div>
+                                              
                                     </div>
                                 </div>
                                       
@@ -220,9 +223,9 @@
                                         <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number" class="form-control" name="limit_query">
-                                        <label class="form-label">Limit</label>
+                                        <label class="form-label">Enter what you\'d type in limit()</label>
                                     </div>
-                                    <div class="help-info">Numbers only</div>
+                                    <div class="help-info">Limit query has to be a number only.</div>
                                 </div>
                                     </div>
                                 </div>
@@ -231,6 +234,8 @@
 
                                              <input type="hidden" value="<?php echo $db_name ?>" name="db_name" />
                                         <button type="submit" class="btn btn-primary m-t-15 waves-effect">SUBMIT</button>
+                                                                  <br>
+                                                                       <br>
                                     </div>
                                 </div>
                             </form>
