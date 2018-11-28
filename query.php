@@ -188,7 +188,7 @@ $output = createExplain();
   <!-- Widgets -->
             <div class="row clearfix">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-pink hover-expand-effect">
+                    <div class="info-box-3 bg-pink hover-zoom-effect">
                         <div class="icon">
                             <i class="material-icons">description</i>
                         </div>
@@ -199,7 +199,7 @@ $output = createExplain();
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-cyan hover-expand-effect">
+                    <div class="info-box-3 bg-cyan hover-zoom-effect">
                         <div class="icon">
                             <i class="material-icons">alarm</i>
                         </div>
@@ -210,7 +210,7 @@ $output = createExplain();
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-light-green hover-expand-effect">
+                    <div class="info-box-3 bg-light-green hover-zoom-effect">
                         <div class="icon">
                             <i class="material-icons">reply</i>
                         </div>
@@ -221,7 +221,7 @@ $output = createExplain();
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-orange hover-expand-effect">
+                    <div class="info-box-3 bg-orange hover-zoom-effect">
                         <div class="icon">
                             <i class="material-icons">vpn_key</i>
                         </div>
