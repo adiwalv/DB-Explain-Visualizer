@@ -21,7 +21,6 @@ makeDir('uploads');
       deleteRubbish($path);
       $output = createExplain();
       $_SESSION["output"] = $output;
-      $_SESSION["file"] = $_FILES['uploaded_file']['name'];
       //print_r( $_SESSION["output"]);
       
       header('Location: file.php');
@@ -123,7 +122,7 @@ foreach($connection->listDatabases() as $database)
                         </div>
                     </div>
                     
-                    <button class="btn btn-block btn-lg bg-green waves-effect" type="submit">CONNECT</button>
+                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">CONNECT</button>
 
                 </form>
 
@@ -140,7 +139,7 @@ foreach($connection->listDatabases() as $database)
                                
 
     <input type="file" name="uploaded_file" required></input><br />
-                    <button class="btn btn-block btn-lg bg-red waves-effect" type="submit">SEE RESULTS</button>
+                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">SEE RESULTS</button>
                                                                                         <br><font color="red"><?php echo $error;?></font>
                 </form>
             </div>

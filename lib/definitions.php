@@ -24,36 +24,50 @@ function getValue($output,$key) {
 }
 
 
+function showRawJSON(){
+  $myfile = fopen("uploads/temp.json", "r") or die("Unable to open file!");
+  // Output one line until end-of-file
+  while(!feof($myfile)) {
+    echo fgets($myfile) . "<br>";
+  }
+  fclose($myfile);
+}
 
 
 function deleteRubbish($file) {
   $cmd = "sed '1,4d' $file";
   $output = shell_exec($cmd);
-  file_put_contents("temp.json",$output);
+  file_put_contents("uploads/temp.json",$output);
 }
 
 function createExplain(){
-  $cmd = "node parser/flatten.js temp.json 2>&1";
+  $cmd = "node parser/flatten.js uploads/temp.json 2>&1";
   exec($cmd,$output);
-  if (!unlink('temp.json')) {
+  /**if (!unlink('temp.json')) {
   echo ("Error deleting temp.json");
-  }
+  }**/
   return $output;
 }
 
+function checkExtension($path){
+  $allowed =  array('json','JSON');
+  $ext = pathinfo($path, PATHINFO_EXTENSION);
+  if(!in_array($ext,$allowed) ) {
+    return FALSE;
+  }
+  return TRUE;
+}
 
 function displayExplain($output){
  
   foreach($output as $key => $value)
   {
+    if (strpos($value, 'internal/modules/cjs/loader') !== false) {
+      echo "<br>There seems to be an error in your Query Or File! <a href = 'index.php'>Go Back</a><br>";
+      break;
+    }
     echo '<pre>';
     echo $value;
-    /**
-    $keywords = preg_split("/[^a-z0-9]+/", $value);
-    for($i = 0;$i < count($keywords); $i++){
-      echo $keywords[$i];
-    }
-    **/
     echo '</pre>';
   }
 }

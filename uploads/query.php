@@ -249,8 +249,7 @@ $output = createExplain();
                                 </div>
                                 <div class="col-xs-12 col-sm-6 align-right">
                                     <div class="switch panel-switch-btn">
-					<button class="btn btn-primary m-t-15 waves-effect">Graphical Representation</button>
-					<button class="btn btn-primary m-t-15 waves-effect" data-toggle="modal" data-target="#largeModal">Show Raw JSON</button>
+                                       <button class="btn btn-primary m-t-15 waves-effect">Graphical Representation</button>
                                     </div>
                                 </div>
                             </div>
@@ -280,25 +279,6 @@ displayExplain($output);
             </div>
 
             <!-- #END# Select -->
-            
-<!-- Large Size -->
-            <div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                                 <h3 class="modal-title" id="largeModalLabel">Raw JSON</h3>
-                        </div>
-                        <div class="modal-body">
-                               <?php  showRawJSON();?>
-                        </div>
-                        <div class="modal-footer">
-                            
-                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
              </div>
         </div>
     </section>

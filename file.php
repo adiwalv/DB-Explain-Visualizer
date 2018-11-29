@@ -3,6 +3,7 @@ session_start();
 
 require('lib/definitions.php');
                                  $output = $_SESSION["output"];
+$file = $_SESSION["file"];
 ?>
 
 <!DOCTYPE html>
@@ -211,19 +212,25 @@ require('lib/definitions.php');
                             </ol>
                         </div> -->
          <!-- Horizontal Layout -->
-                                     <form action="query.php" method="post">
-            <div class="row clearfix">
+
+                       <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                             <h2>
-                      Explain Results
-                                   
-                            </h2>
-                      
-
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>Explain</h2>
+                                         <small><b>File uploaded:<?php echo $file ?></b></small>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 align-right">
+                                    <div class="switch panel-switch-btn">
+					<button class="btn btn-primary m-t-15 waves-effect">Graphical Representation</button>
+					<button class="btn btn-primary m-t-15 waves-effect" data-toggle="modal" data-target="#largeModal">Show Raw JSON</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                          
+       
                         <div class="body">
                         <?php
 
@@ -235,7 +242,26 @@ displayExplain($output);
                 </div>
             </div>
             <!-- #END# Horizontal Layout -->
-                                  
+            <!-- Large Size -->
+            <div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                                 <h3 class="modal-title" id="largeModalLabel">Raw JSON</h3>
+                        </div>
+                        <div class="modal-body">
+                               <?php  showRawJSON();?>
+                        </div>
+                        <div class="modal-footer">
+                            
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
         </div>
     </section>
 
