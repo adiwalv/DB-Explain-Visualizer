@@ -2,6 +2,7 @@
 > ### Prerequisites:
 > 1. Install Mongo from https://nodejs.org/en/download/
 > 2. Install php and apache server.
+> 3. Install mongo php driver from https://docs.mongodb.com/ecosystem/drivers/php/
 
 ### Sample DB
 
