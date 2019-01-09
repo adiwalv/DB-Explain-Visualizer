@@ -30,9 +30,6 @@ file_put_contents($file, $output);
 deleteRubbish($file);
 
 $output = createExplain();
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -128,23 +125,23 @@ $output = createExplain();
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
-           
-            </div>
-            <!-- #User Info -->
-            <!-- Menu -->
-            <div class="menu">
-                <ul class="list">
-                    <li class="header">MAIN NAVIGATION</li>
-                    <li class="active">
-                        <a href="index.php">
-                            <i class="material-icons">home</i>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="material-icons">update</i>
-                            <span>Navigation route #2</span>
+
+                                    </div>
+                                    <!-- #User Info -->
+                                    <!-- Menu -->
+                                    <div class="menu">
+                                             <ul class="list">
+                                                     <li class="header">MAIN NAVIGATION</li>
+                                                                                 <li class="active">
+                                                                                         <a href="index.php">
+                                                                                                <i class="material-icons">home</i>
+                                                                                                       <span>Home</span>
+                                                                                                            </a>
+                                                                                                                  </li>
+                                                                                                                        <li>
+                                                                                                                             <a href="#">
+                                                                                                                                    <i class="material-icons">update</i>
+                                                                                                                                           <span>Navigation route #2</span>
                         </a>
                     </li>
                     <li class="header">Seperator</li>
@@ -169,18 +166,18 @@ $output = createExplain();
             <!-- #Footer -->
         </aside>
         <!-- #END# Left Sidebar -->
-       
-    </section>
 
-    <section class="content">
-        <div class="container-fluid">
-                 
-            <div class="block-header">
-                <h2>DASHBOARD</h2>
-            </div>
-                 <!-- <div class="body">
-                            <ol class="breadcrumb breadcrumb-bg-pink">
-                                <li><a href="index.php"><i class="material-icons">home</i> Home</a></li>
+              </section>
+
+                    <section class="content">
+                                 <div class="container-fluid">
+
+                                          <div class="block-header">
+                                                   <h2>DASHBOARD</h2>
+                                                        </div>
+                                                              <!-- <div class="body">
+                                     <ol class="breadcrumb breadcrumb-bg-pink">
+                                             <li><a href="index.php"><i class="material-icons">home</i> Home</a></li>
                                 <li><a href="text.php"><i class="material-icons">input</i> Input</a></li>
                                 <li class="active"><i class="material-icons">list_alt</i> Explain Result</li>
                             </ol>
@@ -226,84 +223,84 @@ $output = createExplain();
                             <i class="material-icons">vpn_key</i>
                         </div>
                         <div class="content">
-                            <div class="text">Index Keys Examined</div>
-                            <div class="number count-to" data-from="0" data-to="<?php echo getValue($output,"totalKeysExamined");?>" data-speed="1000" data-fresh-interval="20"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #END# Widgets -->
-
-
-                  
-                  <!-- Select -->
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <div class="row clearfix">
-                                <div class="col-xs-12 col-sm-6">
-                                    <h2>Explain</h2>
-                                         <br>
-                                         <small><b><?php echo $query?></b></small>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 align-right">
-                                    <div class="switch panel-switch-btn">
-					<button class="btn btn-primary m-t-15 waves-effect">Graphical Representation</button>
-					<button class="btn btn-primary m-t-15 waves-effect" data-toggle="modal" data-target="#largeModal">Show Raw JSON</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                              
-                        <div class="body">
-                            <div class="row clearfix">
-                              <?php                                      
+                                 <div class="text">Index Keys Examined</div>
+                                                                  <div class="number count-to" data-from="0" data-to="<?php echo getValue($output,"totalKeysExamined");?>" data-speed="1000" data-fresh-interval="20"></div>
+                                                                                                                                                                                                 </div>
+                                                                                                                                                                                                       </div>
+                                                                                                                                                                                                             </div>
+                                                                                                                                                                                                                   </div>
+                                                                                                                                                                                                                         <!-- #END# Widgets -->
 
 
 
+                                                                                                                                                                                                                         <!-- Select -->
+                                                                                                                                                                                                                         <div class="row clearfix">
+                                                                                                                                                                                                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                                                                                                                                                                           <div class="card">
+                                                                                                                                                                                                                                                    <div class="header">
+                                                                                                                                                                                                                                                             <div class="row clearfix">
+                                                                                                                                                                                                                                                                      <div class="col-xs-12 col-sm-6">
+                                                                                                                                                                                                                                                                               <h2>Explain</h2>
+                                                                                                                                                                                                                                                                                    <br>
+                                                                                                                                                                                                                                                                                         <small><b><?php echo $query?></b></small>
+                                                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                                                                                                        <div class="col-xs-12 col-sm-6 align-right">
+                                                                                                                                                                                                                                                                                                                                 <div class="switch panel-switch-btn">
+                                                                                                                                                                 <button class="btn btn-primary m-t-15 waves-effect">Graphical Representation</button>
+                                                                                                                                                                                                                                   <button class="btn btn-primary m-t-15 waves-effect" data-toggle="modal" data-target="#largeModal">Show Raw JSON</button>
+                                                                                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                                                                                                                                                    </div>
 
-displayExplain($output);
- 
+
+
+                                                                                                                                                                                                                                                                                                                                                                          <div class="body">
+                                                                                                                                                                                                                                                                                                                                                                                   <div class="row clearfix">
+<?php
+
+
+
+
+                                     displayExplain($output);
+
 
 ?>
 
 
-                        </div>
+</div>
 
-                    </div>
+</div>
 
-                </div>
+</div>
 
-            </div>
+</div>
 
-            <!-- #END# Select -->
-            
+<!-- #END# Select -->
+
 <!-- Large Size -->
-            <div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                                 <h3 class="modal-title" id="largeModalLabel">Raw JSON</h3>
-                        </div>
-                        <div class="modal-body">
-                               <?php  showRawJSON();?>
-                        </div>
-                        <div class="modal-footer">
-                            
-                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+                                                          <div class="modal-dialog modal-lg" role="document">
+                                                                                                 <div class="modal-content">
+                                                                                                          <div class="modal-header">
+                                                                                                                   <h3 class="modal-title" id="largeModalLabel">Raw JSON</h3>
+                                                                                                                                                                        </div>
+                                                                                                                                                                              <div class="modal-body">
+<?php  showRawJSON();?>
+                                                                                                                                                                                       </div>
+                                                                                                                                                                                             <div class="modal-footer">
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-             </div>
-        </div>
-    </section>
+                                                                                                                                                                                                      <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
 
-    <!-- Jquery Core Js -->
+                                                                                             </div>
+                                                                                                   </div>
+                                                                                                         </div>
+                                                                                                               </div>
+                                                                                                                     </div>
+                                                                                                                           </div>
+                                                                                                                                 </section>
+
+                                                                                                                                       <!-- Jquery Core Js -->
     <script src="plugins/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core Js -->
