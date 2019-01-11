@@ -2,7 +2,7 @@
 session_start();
 
 require('lib/definitions.php');
-                                 $output = $_SESSION["output"];
+$output = $_SESSION["output"];
 $file = $_SESSION["file"];
 ?>
 
@@ -99,7 +99,7 @@ $file = $_SESSION["file"];
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
-           
+
             </div>
             <!-- #User Info -->
             <!-- Menu -->
@@ -140,7 +140,7 @@ $file = $_SESSION["file"];
             <!-- #Footer -->
         </aside>
         <!-- #END# Left Sidebar -->
-       
+
     </section>
 
     <section class="content">
@@ -204,7 +204,7 @@ $file = $_SESSION["file"];
             </div>
             <!-- #END# Widgets -->
 
-                   
+
                  <!-- <div class="body">
                             <ol class="breadcrumb breadcrumb-bg-blue">
                                 <li><a href="index.php"><i class="material-icons">home</i> Home</a></li>
@@ -224,19 +224,19 @@ $file = $_SESSION["file"];
                                 </div>
                                 <div class="col-xs-12 col-sm-6 align-right">
                                     <div class="switch panel-switch-btn">
-					<button class="btn btn-primary m-t-15 waves-effect">Graphical Representation</button>
-					<button class="btn btn-primary m-t-15 waves-effect" data-toggle="modal" data-target="#largeModal">Show Raw JSON</button>
+                    <button class="btn btn-primary m-t-15 waves-effect">Graphical Representation</button>
+                    <button class="btn btn-primary m-t-15 waves-effect" data-toggle="modal" data-target="#largeModal">Show Raw JSON</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-       
+
                         <div class="body">
                         <?php
 
 displayExplain($output);
 ?>
-                                 
+
                         </div>
                     </div>
                 </div>
@@ -253,7 +253,7 @@ displayExplain($output);
                                <?php  showRawJSON();?>
                         </div>
                         <div class="modal-footer">
-                            
+
                             <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
 
                         </div>
@@ -261,7 +261,7 @@ displayExplain($output);
                 </div>
             </div>
 
-            
+
         </div>
     </section>
 

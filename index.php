@@ -5,7 +5,6 @@ session_start();
 require('lib/definitions.php');
 $error = "";
 
-                      
       function makeDir($path)
       {
         return is_dir($path) || mkdir($path);
@@ -17,13 +16,14 @@ makeDir('uploads');
     $path = "uploads/";
     $path = $path . basename( $_FILES['uploaded_file']['name']);
     if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $path) && checkExtension($path)) {
-
-      deleteRubbish($path);
-      $output = createExplain();
+        $new_name = "uploads/temp.json" ;
+        rename( $path, $new_name) ;
+        deleteRubbish($new_name);
+        $output = createExplain();
       $_SESSION["output"] = $output;
       $_SESSION["file"] = $_FILES['uploaded_file']['name'];
       //print_r( $_SESSION["output"]);
-      
+
       header('Location: file.php');
     } else{
         $error = "There was an error uploading the file, please try again and make sure you only upload a json file!";
@@ -47,7 +47,7 @@ makeDir('uploads');
     <link href="css/font.css" rel="stylesheet" type="text/css">
     <link href="css/icons.css" rel="stylesheet" type="text/css">
 
-                                                    
+
     <!-- Bootstrap Core Css -->
     <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
@@ -119,16 +119,16 @@ foreach($connection->listDatabases() as $database)
 ?>
 
 </select>
-                                                                                                                  
+
                         </div>
                     </div>
-                    
+
                     <button class="btn btn-block btn-lg bg-green waves-effect" type="submit">CONNECT</button>
 
                 </form>
 
-                      
-                      
+
+
 
                                       <form  enctype="multipart/form-data" action="index.php" method="POST">
                     <center><h3>Or</h3></center>
@@ -136,51 +136,51 @@ foreach($connection->listDatabases() as $database)
                          <div class="msg">
  <span title="Click ?  to see how to create explain files using mongo"> Select file for explain()                                                                                                                                    <button type="button" class="btn bg-blue btn-circle waves-effect waves-circle waves-float waves-light" data-toggle="modal" data-target="#largeModal" >                                  <i class="material-icons">live_help</i>
                                 </button></span></div>
-                                                          
-                               
+
+
 
     <input type="file" name="uploaded_file" required></input><br />
                     <button class="btn btn-block btn-lg bg-red waves-effect" type="submit">SEE RESULTS</button>
-                                                                                        <br><font color="red"><?php echo $error;?></font>
-                </form>
-            </div>
-                  
-    </div>
+                                                                                                   <br><font color="red"><?php echo $error;?></font>
+</form>
+</div>
+
+</div>
 <!-- Large Size -->
-            <div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                                 <h3 class="modal-title" id="largeModalLabel">How to create a explain() file</h3>
-                        </div>
-                        <div class="modal-body">
-                                 <h4>                             Type the command below in the terminal:</h4>
-        <h6>                                              mongo localhost/dbName --eval "db.collectionName.find({query}).sort({query}).limit(limit_no).explain('allPlansExecution')" > fileName.json</h6>
-                                                                       <br>                      <br>                                                                                       Fill the correct values depending on your database, and then select this newly generated file via the filepicker! 
-                        </div>
-                        <div class="modal-footer">
-                            
-                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+                                                          <div class="modal-dialog modal-lg" role="document">
+                                                                                                 <div class="modal-content">
+                                                                                                          <div class="modal-header">
+                                                                                                                   <h3 class="modal-title" id="largeModalLabel">How to create a explain() file</h3>
+                                                                                                                                                                                              </div>
+                                                                                                                                                                                                    <div class="modal-body">
+                                                                                                                                                                                                             <h4>                             Type the command below in the terminal:</h4>
+                                                                                                                                                                                                                                                                                <h6>                                              mongo localhost/dbName --eval "db.collectionName.find({query}).sort({query}).limit(limit_no).explain('allPlansExecution')" > fileName.json</h6>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <br>                      <br>                                                                                       Fill the correct values depending on your database, and then select this newly generated file via the filepicker!
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="modal-footer">
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
 
-           <script src="plugins/jquery/jquery.min.js"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               </div>
 
-    <!-- Bootstrap Core Js -->
-    <script src="plugins/bootstrap/js/bootstrap.js"></script>
-                <script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
-    <!-- Waves Effect Plugin Js -->
-    <script src="plugins/node-waves/waves.js"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     <script src="plugins/jquery/jquery.min.js"></script>
 
-    <!-- Validation Plugin Js -->
-    <script src="plugins/jquery-validation/jquery.validate.js"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <!-- Bootstrap Core Js -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <script src="plugins/bootstrap/js/bootstrap.js"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             <script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         <!-- Waves Effect Plugin Js -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         <script src="plugins/node-waves/waves.js"></script>
 
-    <!-- Custom Js -->
-    <script src="js/admin.js"></script>
-    <script src="js/pages/examples/sign-up.js"></script>
-</body>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     <!-- Validation Plugin Js -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     <script src="plugins/jquery-validation/jquery.validate.js"></script>
 
-</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <!-- Custom Js -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <script src="js/admin.js"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             <script src="js/pages/examples/sign-up.js"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         </body>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               </html>
