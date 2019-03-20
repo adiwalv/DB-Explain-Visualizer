@@ -32,11 +32,11 @@ function initRealTimeChart() {
         },
         yaxis: {
             min: 0,
-            max: 100
+            max: 50
         },
         xaxis: {
             min: 0,
-            max: 100
+            max: 50
         }
     });
 

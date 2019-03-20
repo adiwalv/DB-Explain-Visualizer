@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 require('lib/definitions.php');
 $error = "";
 
@@ -17,8 +16,9 @@ makeDir('uploads');
     $path = $path . basename( $_FILES['uploaded_file']['name']);
     if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $path) && checkExtension($path)) {
         $new_name = "uploads/temp.json" ;
-        rename( $path, $new_name) ;
-        deleteRubbish($new_name);
+
+       rename( $path, $new_name) ;
+       deleteRubbish($new_name);
         $output = createExplain();
       $_SESSION["output"] = $output;
       $_SESSION["file"] = $_FILES['uploaded_file']['name'];
