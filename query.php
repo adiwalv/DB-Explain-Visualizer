@@ -58,56 +58,7 @@ $output = createExplain();
 
 <script src="js/d3.js" charset="utf-8"></script>
 <script src="js/vtree.js"></script>
-
-<script type="text/javascript">
- var vt;
-
- window.onload = function () {
-     var container = document.getElementById("container");
-
-     vt = new VTree(container);
-     var reader = new VTree.reader.Object();
-     function readTextFile(file) {
-         var allText;
-         var rawFile = new XMLHttpRequest();
-         rawFile.open("GET", file, false);
-         rawFile.onreadystatechange = function ()
-         {
-             if(rawFile.readyState === 4)
-             {
-                 if(rawFile.status === 200 || rawFile.status == 0)
-                 {
-                     allText = rawFile.responseText;
-                 }
-             }
-         }
-         rawFile.send(null);
-         return allText;
-     }
-
-     function updateTree() {
-         var s = readTextFile("uploads/temp.json");
-
-
-
-         try {
-             var jsonData = JSON.parse(s);
-         } catch (e) {
-
-         }
-
-         var data = reader.read(jsonData);
-
-         vt.data(data)
-           .update();
-     }
-
-
-
-     updateTree();
- };
-
-</script>
+        <script src="js/createExplain.js"></script>
 
 
 
