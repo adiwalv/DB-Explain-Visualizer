@@ -27,7 +27,7 @@
          var obj = readTextFile("uploads/temp.json");
          obj = JSON.parse(obj);
 
-         var s = JSON.stringify(obj.executionStats.executionStages);
+         var s = JSON.stringify(obj.stages[0].$cursor.executionStats.executionStages);
 
          try {
              var jsonData = JSON.parse(s);
@@ -54,7 +54,7 @@
          vt.data(data)
              .update();
      }
-     document.getElementById("go-button").onclick = showFullTree;
-     document.getElementById("go-button1").onclick = updateTree;
+     document.getElementById("go-button").onclick = updateTree;
+     document.getElementById("go-button1").onclick = showFullTree;
      updateTree();
  };

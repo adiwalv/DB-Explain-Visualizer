@@ -1,20 +1,13 @@
 <?php
 session_start();
 require('lib/definitions.php');
-$find_query = makeString($_POST["find_query"]);
-$sort_query = makeString($_POST["sort_query"]);
-if($find_query==NULL){
+$aggregate_query = makeString($_POST["aggregate_query"]);
+
+if($aggregate_query==NULL){
 $find_query="{}";
 }
-if($sort_query==NULL){
-$sort_query="{}";
-}
-if($_POST["limit_query"]==NULL){
-$limit_query="";
-} else {
-$limit_query = (int)$_POST["limit_query"];
-}
-$query = "\"db.{$_POST["collection_name"]}.find({$find_query}).sort({$sort_query}).limit({$limit_query}).explain('allPlansExecution');\"";
+
+$query = "\"db.{$_POST["collection_name"]}.explain('allPlansExecution').aggregate({$aggregate_query});\"";
 $cmd = "mongo localhost/{$_POST["db_name"]} --eval ".$query;
 $output = shell_exec($cmd);
 file_put_contents($file, $output);
@@ -58,7 +51,7 @@ $output = createExplain();
 
 <script src="js/d3.js" charset="utf-8"></script>
 <script src="js/vtree.js"></script>
-        <script src="js/createExplain.js"></script>
+        <script src="js/createAggregate.js"></script>
 
 
 
@@ -134,22 +127,21 @@ $output = createExplain();
             <a href="index.php">
               <i class="material-icons">home
               </i>
-              <span>Home
+              <span>Select DB
               </span>
             </a>
           </li>
-        <li>
-        <a href="javascript:history.go(-1)">
-        <i class="material-icons">update
-        </i>
-        <span>Write a New Query
-        </span>
-        </a>
-        </li>
-         
+          <li>
+            <a href="javascript:history.go(-1)">
+              <i class="material-icons">update
+              </i>
+              <span>Write a New Query
+              </span>
+            </a>
+          </li>
           <li class="header">
           </li>
-        </ul>
+           </ul>
       </div>
       <!-- #Menu -->
       <!-- Footer -->
@@ -258,11 +250,11 @@ $output = createExplain();
                 </div>
                 <div class="col-xs-12 col-sm-6 align-right">
                   <div class="switch panel-switch-btn">
-
-        <button  class="btn btn-primary m-t-15 waves-effect" id = "go-button">Show Full View
+        <button  class="btn btn-primary m-t-15 waves-effect" id = "go-button1">Show Full View
         </button>
-        <button  class="btn btn-primary m-t-15 waves-effect"  id = "go-button1">Show Stages View
-                    </button>
+        
+        <button  class="btn btn-primary m-t-15 waves-effect" id = "go-button">Show Stages View
+        </button>
                     <button class="btn btn-primary m-t-15 waves-effect" data-toggle="modal" data-target="#largeModal">Show Raw JSON
                     </button>
                   </div>
