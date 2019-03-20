@@ -26,7 +26,7 @@
      function updateTree() {
          var obj = readTextFile("uploads/temp.json");
          obj = JSON.parse(obj);
-         var s = JSON.stringify(obj.executionStats);
+         var s = JSON.stringify(obj.executionStats.executionStages);
 
 
          try {
@@ -41,7 +41,19 @@
            .update();
      }
 
+     function showFullTree() {
+         var s = readTextFile("uploads/temp.json");
+         try {
+             var jsonData = JSON.parse(s);
+         } catch (e) {
 
+         }
 
+         var data = reader.read(jsonData);
+
+         vt.data(data)
+             .update();
+     }
+     document.getElementById("go-button").onclick = showFullTree;
      updateTree();
  };

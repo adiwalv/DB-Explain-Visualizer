@@ -265,7 +265,10 @@ $output = createExplain();
                 </div>
                 <div class="col-xs-12 col-sm-6 align-right">
                   <div class="switch panel-switch-btn">
-        <button  class="btn btn-primary m-t-15 waves-effect"   data-toggle="modal" data-target="#largeModal1">View Flattened JSON
+
+        <button  class="btn btn-primary m-t-15 waves-effect" id = "go-button">Show Full Tree
+        </button>
+        <button  class="btn btn-primary m-t-15 waves-effect"  data-toggle="modal" data-target="#largeModal1">View Flattened JSON
                     </button>
                     <button class="btn btn-primary m-t-15 waves-effect" data-toggle="modal" data-target="#largeModal">Show Raw JSON
                     </button>
