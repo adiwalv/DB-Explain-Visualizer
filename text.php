@@ -7,7 +7,7 @@
     <title>DB Visualizer
     </title>
     <!-- Favicon-->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicons/favicon.ico" type="image/x-icon">
     <!-- Google Fonts -->
     <link href="css/font.css" rel="stylesheet" type="text/css">
     <link href="css/icons.css" rel="stylesheet" type="text/css">
@@ -105,7 +105,7 @@
               </span>
             </a>
           </li>
-          </ul>
+        </ul>
       </div>
       <!-- #Menu -->
       <!-- Footer -->

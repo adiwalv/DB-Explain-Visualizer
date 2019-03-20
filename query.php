@@ -30,7 +30,7 @@ $output = createExplain();
     <title>DB Visualizer
     </title>
     <!-- Favicon-->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicons/favicon.ico" type="image/x-icon">
     <!-- Google Fonts -->
     <link href="css/font.css" rel="stylesheet" type="text/css">
     <link href="css/icons.css" rel="stylesheet" type="text/css">
@@ -52,16 +52,13 @@ $output = createExplain();
     <link href="css/style.css" rel="stylesheet">
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/themes/all-themes.css" rel="stylesheet" />
-
-
-<link rel="stylesheet" href="css/vtree.css" type="text/css"/>
-
-<script src="js/d3.js" charset="utf-8"></script>
-<script src="js/vtree.js"></script>
-        <script src="js/createExplain.js"></script>
-
-
-
+    <link rel="stylesheet" href="css/vtree.css" type="text/css"/>
+    <script src="js/d3.js" charset="utf-8">
+    </script>
+    <script src="js/vtree.js">
+    </script>
+    <script src="js/createExplain.js">
+    </script>
   </head>
   <body class="theme-blue">
     <!-- Page Loader -->
@@ -138,15 +135,14 @@ $output = createExplain();
               </span>
             </a>
           </li>
-        <li>
-        <a href="javascript:history.go(-1)">
-        <i class="material-icons">update
-        </i>
-        <span>Write a New Query
-        </span>
-        </a>
-        </li>
-         
+          <li>
+            <a href="javascript:history.go(-1)">
+              <i class="material-icons">update
+              </i>
+              <span>Write a New Query
+              </span>
+            </a>
+          </li>
           <li class="header">
           </li>
         </ul>
@@ -258,10 +254,9 @@ $output = createExplain();
                 </div>
                 <div class="col-xs-12 col-sm-6 align-right">
                   <div class="switch panel-switch-btn">
-
-        <button  class="btn btn-primary m-t-15 waves-effect" id = "go-button">Show Full View
-        </button>
-        <button  class="btn btn-primary m-t-15 waves-effect"  id = "go-button1">Show Stages View
+                    <button  class="btn btn-primary m-t-15 waves-effect" id = "go-button">Show Full View
+                    </button>
+                    <button  class="btn btn-primary m-t-15 waves-effect"  id = "go-button1">Show Stages View
                     </button>
                     <button class="btn btn-primary m-t-15 waves-effect" data-toggle="modal" data-target="#largeModal">Show Raw JSON
                     </button>
@@ -271,7 +266,8 @@ $output = createExplain();
             </div>
             <div class="body">
               <div class="row clearfix">
-       <div id = "container"></div>
+                <div id = "container">
+                </div>
               </div>
             </div>
           </div>
