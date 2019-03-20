@@ -27,8 +27,7 @@
          var obj = readTextFile("uploads/temp.json");
          obj = JSON.parse(obj);
 
-         var s = JSON.stringify(obj.executionStats.executionStages);
-
+         var s = JSON.stringify(obj.executionStats);
          try {
              var jsonData = JSON.parse(s);
          } catch (e) {
