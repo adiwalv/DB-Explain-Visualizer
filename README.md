@@ -34,4 +34,4 @@ mongo localhost/test --eval "db.zips.find().limit(10).explain('allPlansExecution
 
 ## Result of Explain
 
-![alt text](src/screenshots/result.png "Detailed Results")
+![alt text](src/screenshots/output.png "Detailed Results")
