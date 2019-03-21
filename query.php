@@ -131,7 +131,7 @@ $output = createExplain();
             <a href="index.php">
               <i class="material-icons">home
               </i>
-              <span>Home
+              <span>Select DB
               </span>
             </a>
           </li>

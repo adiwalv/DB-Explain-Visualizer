@@ -35,6 +35,15 @@ $file = $_SESSION["file"];
     <link href="css/style.css" rel="stylesheet">
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/themes/all-themes.css" rel="stylesheet" />
+
+      <link rel="stylesheet" href="css/vtree.css" type="text/css"/>
+      <script src="js/d3.js" charset="utf-8">
+      </script>
+      <script src="js/vtree.js">
+      </script>
+      <script src="js/createExplain.js">
+      </script>
+
   </head>
   <body class="theme-blue">
     <!-- Page Loader -->
@@ -107,27 +116,19 @@ $file = $_SESSION["file"];
             <a href="index.php">
               <i class="material-icons">home
               </i>
-              <span>Home
+              <span>Select DB
               </span>
             </a>
           </li>
           <li>
-            <a href="#">
+      <a href="javascript:history.go(-1)">
               <i class="material-icons">update
               </i>
-              <span>Navigation route #2
+              <span>Write a New Query
               </span>
             </a>
           </li>
-          <li class="header">Seperator
-          </li>
-          <li>
-            <a href="javascript:void(0);">
-              <i class="material-icons col-red">email
-              </i>
-              <span>Placeholder for other functionality
-              </span>
-            </a>
+          <li class="header">
           </li>
         </ul>
       </div>
@@ -242,19 +243,22 @@ $file = $_SESSION["file"];
                   </small>
                 </div>
                 <div class="col-xs-12 col-sm-6 align-right">
-                  <div class="switch panel-switch-btn">
-                    <button class="btn btn-primary m-t-15 waves-effect">Graphical Representation
-                    </button>
-                    <button class="btn btn-primary m-t-15 waves-effect" data-toggle="modal" data-target="#largeModal">Show Raw JSON
-                    </button>
+                          <div class="switch panel-switch-btn">
+                          <button  class="btn btn-primary m-t-15 waves-effect" id = "go-button">Show Full View
+                          </button>
+                          <button  class="btn btn-primary m-t-15 waves-effect"  id = "go-button1">Show Stages View
+                          </button>
+                          <button class="btn btn-primary m-t-15 waves-effect" data-toggle="modal" data-target="#largeModal">Show Raw JSON
+                          </button>
                   </div>
                 </div>
               </div>
             </div>
             <div class="body">
-              <?php
-displayExplain($output);
-?>
+                          <div class="row clearfix">
+                          <div id = "container">
+                          </div>
+                          </div>
             </div>
           </div>
         </div>
