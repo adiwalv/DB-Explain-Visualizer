@@ -15,6 +15,7 @@ $limit_query="";
 $limit_query = (int)$_POST["limit_query"];
 }
 $query = "\"db.{$_POST["collection_name"]}.find({$find_query}).sort({$sort_query}).limit({$limit_query}).explain('allPlansExecution');\"";
+$displayQuery = "db.{$_POST["collection_name"]}.find({$_POST["find_query"]}).sort({$_POST["sort_query"]}).limit({$limit_query}).explain('allPlansExecution');";
 $cmd = "mongo localhost/{$_POST["db_name"]} --eval ".$query;
 $output = shell_exec($cmd);
 file_put_contents($file, $output);
@@ -248,7 +249,7 @@ $output = createExplain();
                   <br>
                   <small>
                     <b>
-                      <?php echo $query?>
+                      <?php echo $displayQuery?>
                     </b>
                   </small>
                 </div>
