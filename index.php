@@ -142,10 +142,14 @@ echo "<option value = \"{$database->getName()}\">{$database->getName()}</option>
           <div class="modal-body">
             <h4>                             Type the command below in the terminal:
             </h4>
-            <h6>                                              mongo localhost/dbName --eval "db.collectionName.find({query}).sort({query}).limit(limit_no).explain('allPlansExecution')" > fileName.json
-            </h6>
-            <br>                      
-            <br>                                                                                       Fill the correct values depending on your database, and then select this newly generated file via the filepicker!
+            <h5>                                              mongo localhost/dbName --eval "db.collectionName.find({query}).sort({query}).limit(limit_no).explain('allPlansExecution')" > fileName.json
+            </h5>
+                                                                                                   Fill the correct values depending on your database, and then select this newly generated file via the filepicker!
+<br><br>
+    <h4>Alternatively if this does not work</h4>
+    Create a fileName.js file with your query For eg. db.collectionName.find({query}).sort({query}).limit(limit_no).explain('allPlansExecution')  inside the function printjson(). Like this: <h6>printjson(db.collectionName.find({query}).sort({query}).limit(limit_no).explain('allPlansExecution'))</h6>
+                                                                                                                                                                                                                                                       Save this file. And then in the terminal type: <h6>mongo dbname fileName.js > fileName.json </h6> <br>
+                                                                                                                                                                                                                                                                                                                           <h6>And then select this .json file via the file picker.</h6>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE
