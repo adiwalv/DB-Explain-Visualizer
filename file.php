@@ -112,22 +112,15 @@ $file = $_SESSION["file"];
         <ul class="list">
           <li class="header">MAIN NAVIGATION
           </li>
-          <li class="active">
-            <a href="index.php">
-              <i class="material-icons">home
-              </i>
-              <span>Select DB
-              </span>
-            </a>
-          </li>
-          <li>
-      <a href="javascript:history.go(-1)">
-              <i class="material-icons">update
-              </i>
-              <span>Write a New Query
-              </span>
-            </a>
-          </li>
+      <li class="active">
+      <a href="index.php">
+      <i class="material-icons">folder
+      </i>
+      <span>Select a New File
+      </span>
+      </a>
+      </li>
+          
           <li class="header">
           </li>
         </ul>
