@@ -1,0 +1,88 @@
+MongoDB shell version v4.0.7
+connecting to: mongodb://127.0.0.1:27017/test?gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("d02a0e0b-9807-4989-a007-d73cac48251a") }
+MongoDB server version: 4.0.7
+{
+	"queryPlanner" : {
+		"plannerVersion" : 1,
+		"namespace" : "test.retaurants",
+		"indexFilterSet" : false,
+		"parsedQuery" : {
+			"$and" : [
+				{
+					"cuisine" : {
+						"$eq" : "Italian"
+					}
+				},
+				{
+					"grades.score" : {
+						"$gt" : 50
+					}
+				}
+			]
+		},
+		"winningPlan" : {
+			"stage" : "COLLSCAN",
+			"filter" : {
+				"$and" : [
+					{
+						"cuisine" : {
+							"$eq" : "Italian"
+						}
+					},
+					{
+						"grades.score" : {
+							"$gt" : 50
+						}
+					}
+				]
+			},
+			"direction" : "forward"
+		},
+		"rejectedPlans" : [ ]
+	},
+	"executionStats" : {
+		"executionSuccess" : true,
+		"nReturned" : 6,
+		"executionTimeMillis" : 4,
+		"totalKeysExamined" : 0,
+		"totalDocsExamined" : 3772,
+		"executionStages" : {
+			"stage" : "COLLSCAN",
+			"filter" : {
+				"$and" : [
+					{
+						"cuisine" : {
+							"$eq" : "Italian"
+						}
+					},
+					{
+						"grades.score" : {
+							"$gt" : 50
+						}
+					}
+				]
+			},
+			"nReturned" : 6,
+			"executionTimeMillisEstimate" : 0,
+			"works" : 3774,
+			"advanced" : 6,
+			"needTime" : 3767,
+			"needYield" : 0,
+			"saveState" : 29,
+			"restoreState" : 29,
+			"isEOF" : 1,
+			"invalidates" : 0,
+			"direction" : "forward",
+			"docsExamined" : 3772
+		},
+		"allPlansExecution" : [ ]
+	},
+	"serverInfo" : {
+		"host" : "VikasAdiwal",
+		"port" : 27017,
+		"version" : "4.0.7",
+		"gitVersion" : "1b82c812a9c0bbf6dc79d5400de9ea99e6ffa025"
+	},
+	"ok" : 1
+}

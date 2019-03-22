@@ -1,0 +1,195 @@
+MongoDB shell version v4.0.7
+connecting to: mongodb://127.0.0.1:27017/test?gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("3caa2c79-8b93-4840-909b-b5634086b99a") }
+MongoDB server version: 4.0.7
+{
+	"queryPlanner" : {
+		"plannerVersion" : 1,
+		"namespace" : "test.retaurants",
+		"indexFilterSet" : false,
+		"parsedQuery" : {
+			"$and" : [
+				{
+					"borough" : {
+						"$eq" : "Brooklyn"
+					}
+				},
+				{
+					"grades.grade" : {
+						"$eq" : "A"
+					}
+				},
+				{
+					"cuisine" : {
+						"$not" : {
+							"$eq" : "American "
+						}
+					}
+				}
+			]
+		},
+		"winningPlan" : {
+			"stage" : "SORT",
+			"sortPattern" : {
+				"cuisine" : -1
+			},
+			"inputStage" : {
+				"stage" : "SORT_KEY_GENERATOR",
+				"inputStage" : {
+					"stage" : "FETCH",
+					"filter" : {
+						"$and" : [
+							{
+								"grades.grade" : {
+									"$eq" : "A"
+								}
+							},
+							{
+								"cuisine" : {
+									"$not" : {
+										"$eq" : "American "
+									}
+								}
+							}
+						]
+					},
+					"inputStage" : {
+						"stage" : "IXSCAN",
+						"keyPattern" : {
+							"borough" : 1
+						},
+						"indexName" : "borough_1",
+						"isMultiKey" : false,
+						"multiKeyPaths" : {
+							"borough" : [ ]
+						},
+						"isUnique" : false,
+						"isSparse" : false,
+						"isPartial" : false,
+						"indexVersion" : 2,
+						"direction" : "forward",
+						"indexBounds" : {
+							"borough" : [
+								"[\"Brooklyn\", \"Brooklyn\"]"
+							]
+						}
+					}
+				}
+			}
+		},
+		"rejectedPlans" : [ ]
+	},
+	"executionStats" : {
+		"executionSuccess" : true,
+		"nReturned" : 493,
+		"executionTimeMillis" : 32,
+		"totalKeysExamined" : 684,
+		"totalDocsExamined" : 684,
+		"executionStages" : {
+			"stage" : "SORT",
+			"nReturned" : 493,
+			"executionTimeMillisEstimate" : 26,
+			"works" : 1180,
+			"advanced" : 493,
+			"needTime" : 686,
+			"needYield" : 0,
+			"saveState" : 10,
+			"restoreState" : 10,
+			"isEOF" : 1,
+			"invalidates" : 0,
+			"sortPattern" : {
+				"cuisine" : -1
+			},
+			"memUsage" : 235294,
+			"memLimit" : 33554432,
+			"inputStage" : {
+				"stage" : "SORT_KEY_GENERATOR",
+				"nReturned" : 493,
+				"executionTimeMillisEstimate" : 26,
+				"works" : 686,
+				"advanced" : 493,
+				"needTime" : 192,
+				"needYield" : 0,
+				"saveState" : 10,
+				"restoreState" : 10,
+				"isEOF" : 1,
+				"invalidates" : 0,
+				"inputStage" : {
+					"stage" : "FETCH",
+					"filter" : {
+						"$and" : [
+							{
+								"grades.grade" : {
+									"$eq" : "A"
+								}
+							},
+							{
+								"cuisine" : {
+									"$not" : {
+										"$eq" : "American "
+									}
+								}
+							}
+						]
+					},
+					"nReturned" : 493,
+					"executionTimeMillisEstimate" : 26,
+					"works" : 685,
+					"advanced" : 493,
+					"needTime" : 191,
+					"needYield" : 0,
+					"saveState" : 10,
+					"restoreState" : 10,
+					"isEOF" : 1,
+					"invalidates" : 0,
+					"docsExamined" : 684,
+					"alreadyHasObj" : 0,
+					"inputStage" : {
+						"stage" : "IXSCAN",
+						"nReturned" : 684,
+						"executionTimeMillisEstimate" : 26,
+						"works" : 685,
+						"advanced" : 684,
+						"needTime" : 0,
+						"needYield" : 0,
+						"saveState" : 10,
+						"restoreState" : 10,
+						"isEOF" : 1,
+						"invalidates" : 0,
+						"keyPattern" : {
+							"borough" : 1
+						},
+						"indexName" : "borough_1",
+						"isMultiKey" : false,
+						"multiKeyPaths" : {
+							"borough" : [ ]
+						},
+						"isUnique" : false,
+						"isSparse" : false,
+						"isPartial" : false,
+						"indexVersion" : 2,
+						"direction" : "forward",
+						"indexBounds" : {
+							"borough" : [
+								"[\"Brooklyn\", \"Brooklyn\"]"
+							]
+						},
+						"keysExamined" : 684,
+						"seeks" : 1,
+						"dupsTested" : 0,
+						"dupsDropped" : 0,
+						"seenInvalidated" : 0
+					}
+				}
+			}
+		},
+		"allPlansExecution" : [ ]
+	},
+	"serverInfo" : {
+		"host" : "VikasAdiwal",
+		"port" : 27017,
+		"version" : "4.0.7",
+		"gitVersion" : "1b82c812a9c0bbf6dc79d5400de9ea99e6ffa025"
+	},
+	"ok" : 1
+}

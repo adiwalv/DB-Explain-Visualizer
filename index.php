@@ -148,8 +148,11 @@ echo "<option value = \"{$database->getName()}\">{$database->getName()}</option>
 <br><br>
     <h4>Alternatively if this does not work</h4>
     Create a fileName.js file with your query For eg. db.collectionName.find({query}).sort({query}).limit(limit_no).explain('allPlansExecution')  inside the function printjson(). Like this: <h6>printjson(db.collectionName.find({query}).sort({query}).limit(limit_no).explain('allPlansExecution'))</h6>
-                                                                                                                                                                                                                                                       Save this file. And then in the terminal type: <h6>mongo dbname fileName.js > fileName.json </h6> <br>
-                                                                                                                                                                                                                                                                                                                           <h6>And then select this .json file via the file picker.</h6>
+                                                                                                                                                                                                                                                       Save this file. And then in the terminal type: <h6>mongo dbname fileName.js > fileName.json </h6> 
+                                                                                                                                                                                                                                                                                                                           And then select this .json file via the file picker.
+<br><br>
+    <center><h4>You can also checkout some sample plans in the samplePlans folder in the root directory of this project!</h4>
+    <h4>Thank You!</center></h4>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE
