@@ -1,8 +1,11 @@
 ## Installation
 > ### Prerequisites:
-> 1. Install Node from https://nodejs.org/en/download/
-> 2. Install php and apache server.
-> 3. Install mongo php driver from https://docs.mongodb.com/ecosystem/drivers/php/
+> 1. Download the installer.sh from the releases page of this repository.
+> 2. Run the script 
+
+```bash
+sudo sh installer.sh
+```
 
 ### Sample DB
 
