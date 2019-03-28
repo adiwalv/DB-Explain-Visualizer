@@ -1,6 +1,7 @@
 ## Installation
 > ### Prerequisites:
-> 1. Download the installer.sh from the releases page of this repository.
+> 1. Download the installer.sh from the releases page of this repository. [a link] (https://github.com/adiwalv/DB-Explain-Visualizer/releases)
+
 > 2. Run the script 
 
 ```bash
