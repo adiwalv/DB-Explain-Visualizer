@@ -35,7 +35,13 @@ function showRawJSON(){
 
 
 function deleteRubbish($file) {
-    $cmd = "sed '1,4d' $file";
+    $line = fgets(fopen($file, 'r'));
+    if(strpos($line, "v3") !== false)
+    {
+        $cmd = "sed '1,3d' $file";
+       }else{
+        $cmd = "sed '1,4d' $file";
+    }
     $output = shell_exec($cmd);
     file_put_contents($file,$output);
 }
