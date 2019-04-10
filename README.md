@@ -1,11 +1,8 @@
-## Installation
-> ### Prerequisites:
-> 1. Download the installer.sh from the releases page of this repository. (https://github.com/adiwalv/DB-Explain-Visualizer/releases)
-
-> 2. Run the script 
-
+## Installation for ubuntu
 ```bash
-sudo sh installer.sh
+sudo add-apt-repository ppa:vikasadiwal/ppa
+sudo apt-get update
+sudo apt install dbexplain
 ```
 
 ### Sample DB
