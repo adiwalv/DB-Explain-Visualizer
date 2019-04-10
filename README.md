@@ -1,9 +1,19 @@
-## Installation for ubuntu
+## Installation for Ubuntu
 ```bash
 sudo add-apt-repository ppa:vikasadiwal/ppa
 sudo apt-get update
 sudo apt install dbexplain
 ```
+
+### Accessing the application
+
+If you have firefox installed you can directly type this in the terminal:
+
+```bash
+dbexplain
+```
+
+Or else visit localhost/dbexplain/ in your browser of choice!
 
 ### Sample DB
 
