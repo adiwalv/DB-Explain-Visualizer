@@ -15,7 +15,7 @@ sudo apt install dbexplain
 ```
 ### Accessing the application
 
-If you have firefox installed you can directly type this in the terminal:
+Just type this in the terminal:
 
 ```bash
 dbexplain
