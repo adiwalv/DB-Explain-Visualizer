@@ -1,15 +1,8 @@
 ## Installation for Ubuntu
 
-### for 18.04 +
+### for 18.04
 ```bash
 sudo add-apt-repository ppa:vikasadiwal/ppa
-sudo apt-get update
-sudo apt install dbexplain
-```
-### for 16.04 
-
-```bash
-sudo add-apt-repository ppa:vikasadiwal/xenial
 sudo apt-get update
 sudo apt install dbexplain
 ```
